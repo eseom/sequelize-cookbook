@@ -5,6 +5,10 @@
  * LEFT side: Artist
  * RIGHT side:: Album
  * http://www.sqlitetutorial.net/sqlite-sample-database/
+ * 
+ * 
+ * Artist has several Albums. This is an example of querying or
+ * agreegating an Album based on an Artist.
  */
 
 const Sequelize = require('sequelize')
@@ -61,7 +65,7 @@ Artist.hasMany(Album, { foreignKey: 'ArtistId' });
       },
     },
     limit: 10,
-    subQuery: false,
+    subQuery: false, // https://github.com/sequelize/sequelize/issues/6073
   })
 
   const t = new Table()
